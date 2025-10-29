@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+This is a simple project that uses tailwind/php/twig
+this has to keep the most minimalistic tech stack possible.
+the index.php should render the one and only page (twig template)
+in the future the index.php will just include a php file array that will be the data for the page (no database, no api, no external data)
+keep doing the most basic things to answers requests.
+
+never install dependencies (or ask for it)
