@@ -9,3 +9,8 @@ in the future the index.php will just include a php file array that will be the 
 keep doing the most basic things to answers requests.
 
 never install dependencies (or ask for it)
+
+use lucide icons in svg files in the /icons folder. include the svg file in the twig template like this: {% include 'icons/shield-check.svg' %}
+
+
+each section should be a separate section at h-screen height.

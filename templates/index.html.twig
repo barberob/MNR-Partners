@@ -1,36 +1,148 @@
+{% set titleClass = 'text-4xl md:text-6xl font-bold text-primary' %}
+{% set subtitleClass = 'text-xl text-primary/80' %}
+
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="build/output.css">
-</head>
-<body>
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="text-white">
-                    <div class="font-bold text-lg">MNR</div>
-                    <div class="text-xs">PARTNERS</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="build/output.css">
+    </head>
+    <body>
+        <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="text-white">
+                        <div class="font-bold text-lg">MNR</div>
+                        <div class="text-xs">PARTNERS</div>
+                    </div>
+                </div>
+                <nav class="flex items-centerr">
+                    {% for key, value in menu %}
+                        <a href="#{{ key }}" class="text-slate-200 hover:text-white transition-colors cursor-pointer py-3 px-4">{{ value }}</a>
+                    {% endfor %}
+                </nav>
+                <a href="#contact" class="bg-primary hover:bg-primary-lighter transition-colors text-white px-6 py-2 rounded">Contact</a>
+            </div>
+        </header>
+
+        <section id="hero" class="relative h-dvh flex items-center justify-center bg-cover bg-center bg-slate-50" style="background-image: url('{{ hero.image }}');">
+            <div class="relative z-10 text-center px-6 max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-bold text-slate-50 text-shadow-md text-shadow-black/10 mb-6">{{ hero.title }}</h1>
+                <p class="text-xl text-slate-100 text-shadow-md text-shadow-black/10">{{ hero.description }}</p>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-full w-full bg-primary/10 vignette"></div>
+        </section>
+
+        <section id="why" class="min-h-screen bg-slate-100 dots-pattern">
+            <div class="container h-full mx-auto grid md:grid-cols-2 gap-12 items-center ">
+                <div class="space-y-6 ps-24">
+                    <div class="space-y-3">
+                        <h2 class="{{ titleClass }}">{{ why.title }}</h2>
+                        <p class="{{ subtitleClass }}">{{ why.subtitle }}</p>
+                    </div>
+                    <div class="space-y-8 pt-8">
+                        {% for item in why.items %}
+                            <div class="flex gap-4 items-center">
+                                <div class="shrink-0 w-16 h-16 rounded-full border-2 bg-primary flex items-center justify-center">
+                                    <div class="w-8 h-8 [&>svg]:w-full [&>svg]:h-full [&>svg]:text-slate-100">
+                                        {% include "icons/#{item.icon}.svg" ignore missing %}
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-primary mb-1">{{ item.title }}</h3>
+                                    <p class="text-primary/70">{{ item.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="h-full hidden md:flex items-end justify-center">
+                    <img src="img/why.png" alt="" class="w-auto h-[70vh] object-cover">
                 </div>
             </div>
-            <nav class="flex items-center gap-8">
-                {% for key, value in menu %}
-                    <a href="#{{ key }}" class="text-gray-300 hover:text-white transition-colors">{{ value }}</a>
-                {% endfor %}
-            </nav>
-            <a href="#contact" class="bg-blue-400 hover:bg-blue-500 transition-colors text-white px-6 py-2 rounded">Contact</a>
-        </div>
-    </header>
+        </section>
 
-    <section class="relative h-screen flex items-center justify-center bg-cover bg-center bg-slate-50" style="background-image: url('{{ hero.image }}');">
-        <div class="relative z-10 text-center px-6 max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-bold text-foreground mb-6">{{ hero.title }}</h1>
-            <p class="text-xl text-foreground/80">{{ hero.description }}</p>
-        </div>
-        <div class="absolute bottom-0 left-0 right-0 h-full w-full bg-white/20"></div>
-    </section>
+        <section id="activities" class="min-h-screen py-20 bg-primary grid items-center cross-pattern">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-32 space-y-3">
+                    <h2 class="{{ titleClass }} text-slate-100">{{ sectors.title }}</h2>
+                    <p class="{{ subtitleClass }} text-slate-200">{{ sectors.subtitle }}</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for item in sectors.items %}
+                        <div class="bg-slate-100 flex items-center rounded overflow-hidden">
+                            <div class="h-full bg-slate-200 py-12 px-12 flex items-center justify-center">
+                                <div class="w-8 h-8 [&>svg]:w-full [&>svg]:h-full [&>svg]:text-primary">
+                                    {% include "icons/#{item.icon}.svg" ignore missing %}
+                                </div>
+                            </div>
+                            <div class="text-primary font-bold text-xl text-center ps-6">{{ item.label }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
 
-    <section id="why" class="py-24">
-</body>
+        <section id="process" class="min-h-screen bg-slate-100 line-pattern flex items-center">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 space-y-3">
+                    <h2 class="{{ titleClass }} text-primary">{{ process.title }}</h2>
+                    <p class="{{ subtitleClass }} text-primary/80">{{ process.subtitle }}</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {% for step in process.steps %}
+                        <div class="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm">
+                            <img src="{{ step.image }}" alt="{{ step.title }}" class="w-full h-64 object-cover">
+                            <div class="p-4 space-y-3">
+                                <h3 class="font-bold text-xl text-primary">{{ step.title }}</h3>
+                                <p class="text-primary/70">{{ step.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="min-h-screen flex items-center justify-center px-6 grid-pattern">
+            <div class="w-full max-w-4xl">
+                <div class="mb-8 text-center space-y-2">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary">Parlons de votre projet</h2>
+                    <p class="text-lg text-primary/80">Planifiez votre rendez-vous ou posez vos questions !</p>
+                </div>
+                <div class="bg-white shadow-xs border border-slate-200 rounded p-8 md:p-12">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="prenom" class="block mb-2">Prénom</label>
+                                <input type="text" id="prenom" name="prenom" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                            </div>
+                            <div>
+                                <label for="nom" class="block mb-2">Nom</label>
+                                <input type="text" id="nom" name="nom" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">E-mail</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                        </div>
+                        <div>
+                            <label for="telephone" class="block mb-2">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200 resize-none"></textarea>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="bg-primary hover:bg-primary-lighter transition-colors text-white px-4 py-2 hover:cursor-pointer rounded">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
