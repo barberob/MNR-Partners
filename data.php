@@ -11,7 +11,7 @@ function getData(): array {
         'hero' => [
             'title' => 'MNR Partners, votre agrégateur d\'entreprises.',
             'description' => 'Vendez votre société en toute confiance à un partenaire solide et fiable.',
-            'image' => 'https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNpdHl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900',
+            'image' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670',
         ],
         'why' => [
             'title' => 'Pourquoi choisir MNR Partners ?',
@@ -74,22 +74,22 @@ function getData(): array {
             'subtitle' => 'Un processus d\'acquisition transparent et efficace',
             'steps' => [
                 [
-                    'image' => 'https://picsum.dev/static/' . rand(1, 1000) . '/200/150',
+                    'image' => 'https://placehold.co/400',
                     'title' => 'Premier échange',
                     'description' => 'Echange confidentiel et sans engagement.',
                 ],
                 [
-                    'image' => 'https://picsum.dev/static/' . rand(1, 1000) . '/200/150',
+                    'image' => 'https://placehold.co/400',
                     'title' => 'Etude & valorisation',
                     'description' => 'Analyse approfondie de votre société.',
                 ],
                 [
-                    'image' => 'https://picsum.dev/static/' . rand(1, 1000) . '/200/150',
+                    'image' => 'https://placehold.co/400',
                     'title' => 'Offre & négociation',
                     'description' => 'Proposition transparente et juste.',
                 ],
                 [
-                    'image' => 'https://picsum.dev/static/' . rand(1, 1000) . '/200/150',
+                    'image' => 'https://placehold.co/400',
                     'title' => 'Finalisation & accompagnement',
                     'description' => 'Transition fluide et un accompagnement post-cession.',
                 ],

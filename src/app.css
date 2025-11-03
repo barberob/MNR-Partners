@@ -25,8 +25,8 @@
 
     .line-pattern {
         background-color: var(--color-slate-100);
-        background-size: 64px 64px;
-        background-image: repeating-linear-gradient(90deg, var(--color-slate-200), var(--color-slate-200) 1px, var(--color-slate-100) 1px, var(--color-slate-100));
+        background-image: linear-gradient(to left, transparent 0%, var(--color-slate-50) 100%), repeating-linear-gradient(90deg, var(--color-slate-200), var(--color-slate-200) 1px, var(--color-slate-100) 1px, var(--color-slate-100));
+        background-size: 100% 100%, 64px 64px;
     }
 
     .cross-pattern {
@@ -40,8 +40,8 @@
     }
 
     .grid-pattern {
-        background-image:  linear-gradient(var(--color-slate-200) 1px, transparent 1px), linear-gradient(to right, var(--color-slate-200) 1px, var(--color-slate-50) 1px);
-        background-size: 64px 64px;
+        background-image: linear-gradient(to bottom right, transparent 0%, var(--color-slate-50) 100%), linear-gradient(var(--color-slate-200) 1px, transparent 1px), linear-gradient(to right, var(--color-slate-200) 1px, var(--color-slate-50) 1px);
+        background-size: 100% 100%, 64px 64px, 64px 64px;
     }
 
     .vignette {
