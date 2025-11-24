@@ -93,33 +93,26 @@
                 <p class="text-lg text-primary/80" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">Planifiez votre rendez-vous ou posez vos questions !</p>
             </div>
             <div class="bg-white shadow-xs border border-slate-200 rounded p-8 md:p-12" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">
-                <form class="space-y-6">
+                {{ form_start(contactForm, {'attr': {'class': 'space-y-6'}}) }}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="prenom" class="block mb-2">Prénom</label>
-                            <input type="text" id="prenom" name="prenom" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                            {{ form_row(contactForm.firstName) }}
                         </div>
                         <div>
-                            <label for="nom" class="block mb-2">Nom</label>
-                            <input type="text" id="nom" name="nom" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                            {{ form_row(contactForm.lastName) }}
                         </div>
                     </div>
-                    <div>
-                        <label for="email" class="block mb-2">E-mail</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
+                    {{ form_row(contactForm.email) }}
+                    {{ form_row(contactForm.phone) }}
+                    {{ form_row(contactForm.message) }}
+                    {{ form_row(contactForm.acceptTerms) }}
+                    <div class="text-end mt-16 mb-0">
+                        <button type="submit" class="bg-primary ms-auto hover:bg-primary-lighter transition-colors text-white px-4 py-2 hover:cursor-pointer rounded flex items-center gap-2">
+                            {{ux_icon('lucide:send')}}
+                            Envoyer
+                        </button>
                     </div>
-                    <div>
-                        <label for="telephone" class="block mb-2">Téléphone</label>
-                        <input type="tel" id="telephone" name="telephone" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200">
-                    </div>
-                    <div>
-                        <label for="message" class="block mb-2">Message</label>
-                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded text-primary ring-1 ring-slate-200 resize-none"></textarea>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="bg-primary hover:bg-primary-lighter transition-colors text-white px-4 py-2 hover:cursor-pointer rounded">Envoyer</button>
-                    </div>
-                </form>
+                {{ form_end(contactForm) }}
             </div>
         </div>
     </section>
