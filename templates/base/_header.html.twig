@@ -1,0 +1,20 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    x-data="{ isScrolled: false }"
+    @scroll.window.debounce.10ms="isScrolled = window.scrollY > 10"
+    :class="{ 'backdrop-blur-md bg-black/30 shadow-lg': isScrolled }"
+>
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <a href="#hero" class="text-white">
+                <div class="font-bold text-lg">MNR</div>
+                <div class="text-xs">PARTNERS</div>
+            </a>
+        </div>
+        <nav class="hidden md:flex items-center">
+            {% for key, value in menu %}
+                <a href="#{{ key }}" class="text-slate-200 hover:text-white transition-colors cursor-pointer py-3 px-4">{{ value }}</a>
+            {% endfor %}
+        </nav>
+        <a href="#contact" class="bg-primary bg-blend-difference hover:bg-primary-lighter transition-colors text-white px-6 py-2 rounded">Contact</a>
+    </div>
+</header>
