@@ -51,26 +51,32 @@ class DataProvider
                     [
                         'icon' => 'lucide:factory',
                         'label' => 'Industrie & production',
+                        'description' => 'Entreprises de production, usines, ateliers',
                     ],
                     [
                         'icon' => 'lucide:store',
                         'label' => 'Commerce & distribution',
+                        'description' => 'Enseignes de vent, grossistes, e-commerce',
                     ],
                     [
                         'icon' => 'lucide:monitor',
                         'label' => 'Technologies & digital',
+                        'description' => 'Sociétés IT, logiciels, solutions digitales',
                     ],
                     [
                         'icon' => 'lucide:hand-helping',
                         'label' => 'Services',
+                        'description' => 'Cabinets de conseil, maintenance, logistique B2B',
                     ],
                     [
                         'icon' => 'lucide:plus-circle',
                         'label' => 'Santé & bien-être',
+                        'description' => 'Cliniques, laboratoires, centres de soins',
                     ],
                     [
                         'icon' => 'lucide:building',
                         'label' => 'Construction & habitat',
+                        'description' => 'Promoteurs, agences, entreprises du bâtiment',
                     ],
                 ],
             ],
@@ -79,22 +85,22 @@ class DataProvider
                 'subtitle' => 'Un processus d\'acquisition transparent et efficace',
                 'steps' => [
                     [
-                        'image' => 'https://placehold.co/400',
+                        'image' => '/img/mnr_process_1.jpg',
                         'title' => 'Premier échange',
                         'description' => 'Echange confidentiel et sans engagement.',
                     ],
                     [
-                        'image' => 'https://placehold.co/400',
+                        'image' => '/img/mnr_process_2.jpg',
                         'title' => 'Etude & valorisation',
                         'description' => 'Analyse approfondie de votre société.',
                     ],
                     [
-                        'image' => 'https://placehold.co/400',
+                        'image' => '/img/mnr_process_3.jpg',
                         'title' => 'Offre & négociation',
                         'description' => 'Proposition transparente et juste.',
                     ],
                     [
-                        'image' => 'https://placehold.co/400',
+                        'image' => '/img/mnr_process_4.jpg',
                         'title' => 'Finalisation & accompagnement',
                         'description' => 'Transition fluide et un accompagnement post-cession.',
                     ],

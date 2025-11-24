@@ -51,7 +51,7 @@
                 <h2 class="{{ titleClass }} text-slate-100" data-aos="fade-up" data-aos-duration="{{ animationDuration }}">{{ sectors.title }}</h2>
                 <p class="{{ subtitleClass }} text-slate-200" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">{{ sectors.subtitle }}</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {% for item in sectors.items %}
                     <div class="bg-slate-100 flex items-center rounded overflow-hidden" data-aos="fade-in" data-aos-delay="{{ loop.index * (animationDelay / animationFactor) }}" data-aos-anchor-placement="top-bottom">
                         <div class="h-full bg-slate-200 p-6 md:p-12 flex items-center justify-center">
@@ -59,7 +59,10 @@
                                 {{ ux_icon(item.icon) }}
                             </div>
                         </div>
-                        <h3 class="text-primary/80 font-bold text-xl text-start xl:text-center px-3 xl:px-6">{{ item.label }}</h3>
+                        <div class="p-4 space-y-2">
+                            <h3 class="text-primary/80 font-bold text-xl">{{ item.label }}</h3>
+                            <p class="text-slate-600">{{ item.description }}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -75,7 +78,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for step in process.steps %}
                     <div class="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm" data-aos="fade-in" data-aos-delay="{{ loop.index * animationDelay / animationFactor }}" data-aos-anchor-placement="top-bottom">
-                        <img src="{{ step.image }}" alt="{{ step.title }}" class="w-full h-64 object-cover" loading="lazy">
+                        <img src="{{ asset(step.image) }}" alt="{{ step.title }}" class="w-full h-64 object-cover" loading="lazy">
                         <div class="p-4 space-y-3">
                             <h3 class="font-bold text-xl text-primary">{{ step.title }}</h3>
                             <p class="text-primary/70">{{ step.description }}</p>
