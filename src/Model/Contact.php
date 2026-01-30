@@ -16,6 +16,7 @@ class Contact
     #[Assert\Email(message: 'Veuillez saisir une adresse e-mail valide.')]
     public ?string $email = null;
 
+    #[Assert\NotBlank(message: 'Le numéro de téléphone est obligatoire.')]
     public ?string $phone = null;
 
     #[Assert\NotBlank(message: 'Le message ne peut pas être vide.')]

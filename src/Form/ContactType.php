@@ -59,7 +59,9 @@ class ContactType extends AbstractType
                     'placeholder' => '',
                     'class' => $inputClass,
                 ],
-                'required' => false,
+                'constraints' => [
+                    new NotBlank(message: 'Le numéro de téléphone est obligatoire.')
+                ],
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
