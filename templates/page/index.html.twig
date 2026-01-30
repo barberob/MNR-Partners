@@ -7,13 +7,36 @@
 {% set animationFactor = 2 %}
 {% set animationEasing = 'ease-in-out' %}
 
+{% form_theme contactForm _self %}
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <ul class="mt-1 text-sm text-red-600 list-none">
+            {% for message in errors|map(e => e.message) %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+{% block form_row %}
+    {% set widget_attr = {} %}
+    {% if help is not empty %}
+        {% set widget_attr = {attr: {'aria-describedby': id ~ '_help'}} %}
+    {% endif %}
+    <div{% if form.vars.row_attr %}{% with {attr: form.vars.row_attr} %}{{ block('attributes') }}{% endwith %}{% endif %}>
+        {{ form_label(form) }}
+        {{ form_widget(form, widget_attr) }}
+        {{ form_errors(form) }}
+        {{ form_help(form) }}
+    </div>
+{% endblock %}
+
 {% block body %}
     <section id="hero" class="relative h-dvh flex items-center justify-center bg-cover bg-center bg-slate-50 py-20" style="background-image: url('{{ hero.image }}');">
         <div class="relative z-10 text-center px-6 max-w-4xl">
             <h1 class="text-5xl md:text-7xl font-bold text-slate-50 text-shadow-md text-shadow-black/10 mb-6" data-aos="fade-up" data-aos-duration="{{ animationDuration }}">{{ hero.title }}</h1>
             <p class="text-xl text-slate-100 text-shadow-md text-shadow-black/10" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">{{ hero.description }}</p>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-full w-full bg-primary/20 vignette"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-full w-full bg-primary/40 vignette"></div>
     </section>
 
     <section id="why" class="bg-slate-100 dots-pattern py-32 lg:pb-0!">
@@ -23,7 +46,7 @@
                     <h2 class="{{ titleClass }}" data-aos="fade-up" data-aos-duration="{{ animationDuration }}">{{ why.title }}</h2>
                     <p class="{{ subtitleClass }}" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">{{ why.subtitle }}</p>
                 </div>
-                <div class="space-y-8 pt-8">
+                <div class="space-y-8 pt-8 pb-32">
                     {% for item in why.items %}
                         <div class="flex gap-4 items-center" data-aos="fade-in" data-aos-delay="{{ loop.index * (animationDelay / animationFactor) }}" data-aos-anchor-placement="top-bottom">
                             <div class="shrink-0 w-16 h-16 rounded-full border-2 bg-primary flex items-center justify-center">
@@ -89,7 +112,9 @@
         </div>
     </section>
 
-    <section id="contact" class="flex items-center justify-center px-6 grid-pattern py-32">
+    <section id="contact" class="flex items-center justify-center px-6 grid-pattern py-32"
+             x-data="{ formHasErrors: {{ (not contactForm.vars.valid and contactForm.vars.submitted) ? 'true' : 'false' }} }"
+             x-init="if(formHasErrors) $el.scrollIntoView({ behavior: 'smooth', block: 'start' })">
         <div class="w-full max-w-4xl">
             <div class="mb-8 text-center space-y-2">
                 <h2 class="text-4xl md:text-5xl font-bold text-primary" data-aos="fade-up" data-aos-duration="{{ animationDuration }}">Parlons de votre projet</h2>
