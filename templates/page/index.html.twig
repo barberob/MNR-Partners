@@ -8,6 +8,14 @@
 {% set animationEasing = 'ease-in-out' %}
 
 {% form_theme contactForm _self %}
+{% block form_label %}
+    {% if label is not empty %}
+        <label for="{{ form.vars.id }}"{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ label }}
+            {% if form.vars.required %}<span class="text-red-500">*</span>{% endif %}
+        </label>
+    {% endif %}
+{% endblock %}
 {% block form_errors %}
     {% if errors|length > 0 %}
         <ul class="mt-1 text-sm text-red-600 list-none">
@@ -122,6 +130,7 @@
             </div>
             <div class="bg-white shadow-xs border border-slate-200 rounded p-8 md:p-12" data-aos="fade-in" data-aos-delay="{{ animationDelay }}" data-aos-duration="{{ animationDuration }}">
                 {{ form_start(contactForm, {'attr': {'class': 'space-y-6'}}) }}
+                    <p class="text-sm text-primary/70 mb-4">Les champs marqués d'un <span class="text-red-500">*</span> sont obligatoires.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             {{ form_row(contactForm.firstName) }}
