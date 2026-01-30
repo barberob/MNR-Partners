@@ -59,9 +59,7 @@ class ContactType extends AbstractType
                     'placeholder' => '',
                     'class' => $inputClass,
                 ],
-                'constraints' => [
-                    new NotBlank(message: 'Le numéro de téléphone est obligatoire.'),
-                ],
+                'required' => false,
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
@@ -77,7 +75,7 @@ class ContactType extends AbstractType
             ])
             ->add('acceptTerms', CheckboxType::class, [
                 'label' => 'En cochant cette case, j\'accepte que mes données soient traitées par MNR Partners pour me recontacter.',
-                'label_attr' => ['class' => 'text-sm'],
+                'label_attr' => ['class' => 'text-sm cursor-pointer'],
                 'mapped' => false,
                 'row_attr' => [
                     'class' => 'flex flex-row-reverse items-center gap-2 justify-end',
