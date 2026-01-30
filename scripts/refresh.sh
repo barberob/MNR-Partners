@@ -1,4 +1,5 @@
 php bin/console tailwind:build --minify
+php bin/console asset-map:compile
 php bin/console cache:clear
 php bin/console cache:warmup
 chown -R www-data:www-data ./var
