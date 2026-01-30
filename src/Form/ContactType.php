@@ -48,12 +48,8 @@ class ContactType extends AbstractType
                     'class' => $inputClass,
                 ],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'L\'adresse e-mail est obligatoire.',
-                    ]),
-                    new Email([
-                        'message' => 'Veuillez saisir une adresse e-mail valide.',
-                    ]),
+                    new NotBlank(message: 'L\'adresse e-mail est obligatoire.'),
+                    new Email(message: 'Veuillez saisir une adresse e-mail valide.'),
                 ],
             ])
             ->add('phone', TelType::class, [
@@ -64,9 +60,7 @@ class ContactType extends AbstractType
                     'class' => $inputClass,
                 ],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le numéro de téléphone est obligatoire.',
-                    ]),
+                    new NotBlank(message: 'Le numéro de téléphone est obligatoire.'),
                 ],
             ])
             ->add('message', TextareaType::class, [
@@ -77,13 +71,8 @@ class ContactType extends AbstractType
                     'class' => $inputClass.' resize-none',
                 ],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le message est obligatoire.',
-                    ]),
-                    new Length([
-                        'max' => 3000,
-                        'maxMessage' => 'Le message ne peut pas contenir plus de {{ limit }} caractères.',
-                    ]),
+                    new NotBlank(message: 'Le message est obligatoire.'),
+                    new Length(max: 3000, maxMessage: 'Le message ne peut pas contenir plus de {{ limit }} caractères.'),
                 ],
             ])
             ->add('acceptTerms', CheckboxType::class, [
@@ -94,9 +83,7 @@ class ContactType extends AbstractType
                     'class' => 'flex flex-row-reverse items-center gap-2 justify-end',
                 ],
                 'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez accepter le traitement de vos données.',
-                    ]),
+                    new IsTrue(message: 'Vous devez accepter le traitement de vos données.'),
                 ],
             ])
         ;
