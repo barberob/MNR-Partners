@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth bg-primary">
+<html lang="fr" class="scroll-smooth bg-primary" data-turbo="false">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}MNR Partners{% endblock %}</title>
@@ -21,6 +21,7 @@
     <body>
         {% include 'base/_header.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'base/_footer.html.twig' %}
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init({easing: 'ease-in-out'});
